@@ -33,7 +33,7 @@ function passwordTest() {
     }
   
     if(document.getElementById("typePassword").value = password) {
-    var audio = new Audio('Images/congratulations.mp3');
+    var audio = new Audio('congratulations.mp3');
     audio.play();
     enterPassword.style.visibility="hidden";
     typePassword.style.visibility="hidden";
