@@ -10,6 +10,7 @@ enterPassword.style.visibility="hidden";
 typePassword.style.visibility="hidden";
 passwordCheck.style.visibility="hidden";
 clue.style.visibility="hidden";
+mainTimer.style.visibility="hidden";
 
 var password1 = "NICE";
 var password2 = "nice";
@@ -46,6 +47,7 @@ function passwordTest() {
     endGame2.style.visibility="hidden";
     endGame3.style.visibility="hidden";
     endGame4.style.visibility="hidden";
+    stopTimer()
 
     setTimeout(() => {
         const endGame = document.getElementById('endGame');
@@ -66,21 +68,12 @@ function getRndInteger(min, max) {
 document.getElementById('Start').addEventListener('mousedown', setTheText);
 
 function setTheText() {
-    document.getElementById('Press').style.visibility = "hidden";
-    
-}
-
-document.getElementById('Start').addEventListener('mousedown', setTheText1);
-
-function setTheText1() {
     document.getElementById('randomNumber').style.visibility = "visible";
     document.getElementById('topSecret').style.visibility = "visible";
-}
-
-document.getElementById('Start').addEventListener('mousedown', setTheText2);
-
-function setTheText2() {
+    document.getElementById('Press').style.visibility = "hidden";
     document.getElementById('reSet').style.visibility = "visible";
+    mainTimer.style.visibility="visible";
+    startTimer()
 }
 
 document.getElementById("reSet").addEventListener("mouseover", hoverIsON);
@@ -166,4 +159,22 @@ gameTitle.addEventListener("mouseout", function() {
 
 function overFor5s() {
   alert("The code is 'NICE'");
+}
+
+
+let startTime;
+let timerInterval;
+
+function startTimer() {
+	startTime = Date.now();
+	timerInterval = setInterval(updateTimer, 1000);
+}
+
+function updateTimer() {
+	const elapsedTime = Math.floor((Date.now() - startTime) / 1000);
+	document.getElementById("timer").textContent = elapsedTime;
+}
+
+function stopTimer() {
+	clearInterval(timerInterval);
 }
