@@ -11,13 +11,15 @@ typePassword.style.visibility="hidden";
 passwordCheck.style.visibility="hidden";
 clue.style.visibility="hidden";
 
-var password = "NICE";
+var password1 = "NICE";
+var password2 = "nice";
 
 document.getElementById('passwordCheck').addEventListener('mousedown', passwordTest);
 
 function passwordTest() {   
   
-    if(document.getElementById("typePassword").value != password) {
+    if(document.getElementById("typePassword").value != password1 &&
+    document.getElementById("typePassword").value != password2) {
         endGame4.style.visibility="visible";
         endGame.style.visibility="hidden";
         endGame2.style.visibility="hidden";
@@ -32,8 +34,9 @@ function passwordTest() {
       return false;
     }
   
-    if(document.getElementById("typePassword").value = password) {
-    var audio = new Audio('congratulations.mp3');
+    if(document.getElementById("typePassword").value == password1 ||
+    document.getElementById("typePassword").value == password2) {
+    var audio = new Audio('Images/congratulations.mp3');
     audio.play();
     enterPassword.style.visibility="hidden";
     typePassword.style.visibility="hidden";
