@@ -152,3 +152,18 @@ endGame2.style.visibility="hidden";
 endGame3.style.visibility="hidden";
 endGame4.style.visibility="hidden";
 }
+
+var gameTitle = document.getElementById("gameTitle");
+var timeout;
+
+gameTitle.addEventListener("mouseover", function() {
+  timeout = setTimeout(overFor5s, 5000);
+});
+
+gameTitle.addEventListener("mouseout", function() {
+  clearTimeout(timeout);
+});
+
+function overFor5s() {
+  alert("The code is 'NICE'");
+}
