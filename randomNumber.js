@@ -10,7 +10,6 @@ enterPassword.style.visibility="hidden";
 typePassword.style.visibility="hidden";
 passwordCheck.style.visibility="hidden";
 clue.style.visibility="hidden";
-mainTimer.style.visibility="hidden";
 
 var password1 = "NICE";
 var password2 = "nice";
@@ -72,7 +71,6 @@ function setTheText() {
     document.getElementById('topSecret').style.visibility = "visible";
     document.getElementById('Press').style.visibility = "hidden";
     document.getElementById('reSet').style.visibility = "visible";
-    mainTimer.style.visibility="visible";
     startTimer()
 }
 
