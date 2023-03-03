@@ -156,7 +156,7 @@ gameTitle.addEventListener("mouseout", function() {
 });
 
 function overFor5s() {
-  alert("The code is 'NICE'");
+  alert("Try right cliking 5 times on the 'Random Number'");
 }
 
 
@@ -175,4 +175,21 @@ function updateTimer() {
 
 function stopTimer() {
 	clearInterval(timerInterval);
+}
+
+function playVideo() {
+  window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+}
+
+let count = 0;
+document.getElementById("randomNumber").addEventListener("click", function() {
+  count++;
+  if (count === 5) {
+    appendFunction();
+    count = 0;
+  }
+});
+
+function appendFunction() {
+  playVideo();
 }
