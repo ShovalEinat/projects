@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Game</title>
+    <link href="mathGame.css" rel="stylesheet">
+</head>
+<body>  
+    
+<div id="mathGame">
+    
+  <h1 id="title">Math Game</h1>
+  <div id="start-btn">
+    <imput id="select" onclick="showOptions()">Select Maximum Number</imput>
+    <div id="maxNum-options">
+        <button onclick="setMaxNum(10)"><br>10 <br> (easy)</button>
+        <button onclick="setMaxNum(50)"><br>50 <br> (normal)</button>
+        <button onclick="setMaxNum(100)"><br>100 <br> (hard)</button>
+    </div>
+  </div>
+  <div id="game-container" style="display: none">
+    <p id="question"></p>
+    <input type="number" id="answer" autocomplete="off">
+    <br>
+    <br>
+    <button id="checkAnswer" onclick="checkAnswer()">Check Answer</button>
+    <p id="result"></p>
+    <p id="timer"></p>
+    <p id="score"></p>
+  </div>
+  <div id="result-container"></div>
+
+</div>
+
+<script src="mathGame.js"></script>
+
+</body>
+</html>

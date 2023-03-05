@@ -1,0 +1,104 @@
+body {
+    background-color: #adadad;
+    text-align: center;
+    font-family:monospace;
+}
+  
+h1 {
+    color: #333;
+}
+  
+#game {
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+  
+#question {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+  
+#answer {
+    font-size: 20px;
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 0 5px rgb(0, 0, 0);
+}
+  
+#result {
+    font-size: 24px;
+    margin-top: 20px;
+}
+  
+#maxNum-options button {
+    background-color: transparent;
+    border: none;
+    color: #000000;
+}
+
+#mathGame {
+    background-color: white;
+    border: 2px solid black;
+    box-shadow: -3px 2px 9px 6px black;
+    border-radius: 5px;
+    width: 700px;
+    height: 400px;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+#checkAnswer{
+    font-size: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #000000;
+    color: #fff;
+    cursor: pointer;
+}
+
+#checkAnswer:hover{
+    background-color: #3b3b3b;
+    color: rgb(255, 255, 255);
+}
+
+#maxNum-options button:nth-child(1),
+#maxNum-options button:nth-child(2),
+#maxNum-options button:nth-child(3) {
+  font-size: 40px;
+  cursor: pointer;
+  font-family:monospace;
+}
+
+#select{
+    font-size: 35px;
+}
+
+#question{
+    font-size: 35px;
+    height: 25px;
+}
+
+#title{
+    font-size: 40px;
+    height: 25px;
+}
+
+#game-container{
+    font-size: 20px;
+}
+
+#result-container{
+    font-size: 40px;
+    text-align: center;
+    font-family:monospace;
+}
