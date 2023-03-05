@@ -6,7 +6,7 @@ function generateQuestion() {
   operator = 3;
   document.getElementById("question").innerHTML = num1 + " * " + num2;
   answer = num1 * num2;
-  numQuestions++; // increment numQuestions
+  numQuestions++;
 }
 
 function startGame() {
