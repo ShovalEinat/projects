@@ -47,7 +47,7 @@ function checkAnswer() {
 function startTimer() {
   timeLeft--;
   document.getElementById("timer").innerHTML = "Time Left: " + timeLeft + "s";
-  if (timeLeft === 49) {
+  if (timeLeft === 0) {
     endGame();
   } else {
     timer = setTimeout(startTimer, 1000);
