@@ -10,7 +10,6 @@ function generateQuestion() {
 }
 
 function startGame() {
-  maxNum = 10;
   timeLeft = 60;
   score = 0;
   numQuestions = 0;
@@ -67,7 +66,7 @@ function endGame() {
   document.getElementById("start-btn").style.display = "block";
   var audio = new Audio('congratulations.mp3');
   audio.play();
-}  
+}
 
 function setMaxNum(num) {
   maxNum = num;
@@ -80,18 +79,18 @@ function showOptions() {
 }
 
 function playVideo() {
-    window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+  window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
 }
-  
-  let count = 0;
-  document.getElementById("title").addEventListener("click", function() {
-    count++;
-    if (count === 5) {
-      appendFunction();
-      count = 0;
-    }
+
+let count = 0;
+document.getElementById("title").addEventListener("click", function() {
+  count++;
+  if (count === 5) {
+    appendFunction();
+    count = 0;
+  }
 });
-  
-  function appendFunction() {
-    playVideo();
+
+function appendFunction() {
+  playVideo();
 }
