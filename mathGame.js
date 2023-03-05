@@ -65,7 +65,7 @@ function endGame() {
   resultText.innerHTML = "Game Over! Your final score is " + score + " out of " + numQuestions + " (" + percentage.toFixed(2) + "%).";
   document.getElementById("result-container").appendChild(resultText);
   document.getElementById("start-btn").style.display = "block";
-  var audio = new Audio('Images/congratulations.mp3');
+  var audio = new Audio('congratulations.mp3');
   audio.play();
 }  
 
