@@ -60,30 +60,27 @@ function endGame() {
   document.getElementById("timer").style.display = "none";
   document.getElementById("score").style.display = "none";
   document.getElementById("select").style.display = "none";
-  var percentage = numCorrect/numQuestions * 100;
+  numQuestions = numQuestions -1;
+  var percentage = numCorrect / numQuestions * 100;
   var resultText = document.createElement("p");
   resultText.innerHTML = "Game Over! Your final score is " + score + " out of " + numQuestions + " (" + percentage.toFixed(2) + "%).";
   document.getElementById("result-container").appendChild(resultText);
   document.getElementById("start-btn").style.display = "block";
-  
-  if(score > 25){
-    var sheesh = new Audio('sheesh.mp3');
+
+  if (score > 25) {
+    var sheesh = new Audio("sheesh.mp3");
     sheesh.play();
-  }
-  else if(score > 10){
-    var ohMyGod = new Audio('ohMyGod.mp3');
+  } else if (score > 10) {
+    var ohMyGod = new Audio("ohMyGod.mp3");
     ohMyGod.play();
-  }
-  else if(score > 0){
-    var wow = new Audio('wowww.mp3');
+  } else if (score > 0) {
+    var wow = new Audio("wowww.mp3");
     wow.play();
-  }
-  else if(score > -10){
-    var windowsError = new Audio('windowsError.mp3');
+  } else if (score > -10) {
+    var windowsError = new Audio("windowsError.mp3");
     windowsError.play();
-  }
-  else {
-    var bruh = new Audio('bruh.mp3');
+  } else {
+    var bruh = new Audio("bruh.mp3");
     bruh.play();
   }
 }
