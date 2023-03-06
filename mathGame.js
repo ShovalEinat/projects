@@ -22,8 +22,8 @@ function startGame() {
   document.getElementById("score").innerHTML = "Score: " + score;
   document.getElementById("timer").innerHTML = "Time Left: " + timeLeft + "s";
   startTimer();
-  document.getElementById("answer").addEventListener("keydown", function(event) {
-    if (event.key === "Enter") {
+  document.addEventListener("keydown", function(event) {
+    if (event.code === "Enter") {
       checkAnswer();
     }
   });
@@ -61,9 +61,9 @@ function reStart() {
   numCorrect = 0;
   document.getElementById("score").innerHTML = "Score: " + score;
   document.getElementById("timer").innerHTML = "Time Left: " + timeLeft + "s";
-  document.getElementById("result").innerHTML = ""; // clear the result text
+  document.getElementById("result").innerHTML = "";
   clearTimeout(timer);
-  generateQuestion(); // generate a new question
+  generateQuestion();
   timer = setTimeout(startTimer, 1000);
 }
 
