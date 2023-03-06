@@ -47,7 +47,7 @@ h1 {
     box-shadow: -3px 2px 9px 6px black;
     border-radius: 5px;
     width: 700px;
-    height: 400px;
+    height: 475px;
     margin: auto;
     top: 0;
     bottom: 0;
@@ -66,6 +66,36 @@ h1 {
 }
 
 #checkAnswer:hover{
+    background-color: #3b3b3b;
+    color: rgb(255, 255, 255);
+}
+
+#reStart{
+    font-size: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #000000;
+    color: #fff;
+    cursor: pointer;
+}
+
+#reStart:hover{
+    background-color: #3b3b3b;
+    color: rgb(255, 255, 255);
+}
+
+#back{
+    font-size: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #000000;
+    color: #fff;
+    cursor: pointer;
+}
+
+#back:hover{
     background-color: #3b3b3b;
     color: rgb(255, 255, 255);
 }
