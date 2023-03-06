@@ -37,6 +37,7 @@ function checkAnswer() {
     document.getElementById("result").innerHTML = "Correct!";
   } else {
     document.getElementById("result").innerHTML = "Incorrect. The answer was " + answer + ".";
+    score = score -1;
   }
   document.getElementById("answer").value = "";
   generateQuestion();
@@ -46,7 +47,7 @@ function checkAnswer() {
 function startTimer() {
   timeLeft--;
   document.getElementById("timer").innerHTML = "Time Left: " + timeLeft + "s";
-  if (timeLeft === 0) {
+  if (timeLeft === 49) {
     endGame();
   } else {
     timer = setTimeout(startTimer, 1000);
@@ -64,8 +65,27 @@ function endGame() {
   resultText.innerHTML = "Game Over! Your final score is " + score + " out of " + numQuestions + " (" + percentage.toFixed(2) + "%).";
   document.getElementById("result-container").appendChild(resultText);
   document.getElementById("start-btn").style.display = "block";
-  var audio = new Audio('congratulations.mp3');
-  audio.play();
+  
+  if(score > 25){
+    var sheesh = new Audio('sheesh.mp3');
+    sheesh.play();
+  }
+  else if(score > 10){
+    var ohMyGod = new Audio('ohMyGod.mp3');
+    ohMyGod.play();
+  }
+  else if(score > 0){
+    var wow = new Audio('wowww.mp3');
+    wow.play();
+  }
+  else if(score > -10){
+    var windowsError = new Audio('windowsError.mp3');
+    windowsError.play();
+  }
+  else {
+    var bruh = new Audio('bruh.mp3');
+    bruh.play();
+  }
 }
 
 function setMaxNum(num) {
@@ -78,19 +98,11 @@ function showOptions() {
   document.getElementById("maxNum-options").style.display = "block";
 }
 
-function playVideo() {
-  window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
-}
-
-let count = 0;
+let rickRolledCount = 0;
 document.getElementById("title").addEventListener("click", function() {
-  count++;
-  if (count === 5) {
-    appendFunction();
-    count = 0;
+  rickRolledCount++;
+  if (rickRolledCount === 5) {
+    window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+    rickRolledCount = 0;
   }
 });
-
-function appendFunction() {
-  playVideo();
-}
