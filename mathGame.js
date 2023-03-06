@@ -54,6 +54,35 @@ function startTimer() {
   }
 }
 
+function reStart() {
+  timeLeft = 60;
+  score = 0;
+  numQuestions = 0;
+  numCorrect = 0;
+  document.getElementById("score").innerHTML = "Score: " + score;
+  document.getElementById("timer").innerHTML = "Time Left: " + timeLeft + "s";
+  document.getElementById("result").innerHTML = ""; // clear the result text
+  clearTimeout(timer);
+  generateQuestion(); // generate a new question
+  timer = setTimeout(startTimer, 1000);
+}
+
+document.addEventListener("keydown", function(event) {
+  if (event.code === "KeyR") {
+    reStart();
+  }
+});
+
+function back() {
+  location.reload();
+}
+
+document.addEventListener("keydown", function(event) {
+  if (event.code === "KeyB") {
+    back();
+  }
+});
+
 function endGame() {
   clearInterval(timer);
   document.getElementById("game-container").style.display = "none";
