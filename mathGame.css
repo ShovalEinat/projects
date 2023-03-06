@@ -1,5 +1,5 @@
 body {
-    background-color: #adadad;
+    background-color: #7F7679;
     text-align: center;
     font-family:monospace;
 }
@@ -103,20 +103,20 @@ h1 {
 #maxNum-options button:nth-child(1),
 #maxNum-options button:nth-child(2),
 #maxNum-options button:nth-child(3) {
-  font-size: 40px;
-  cursor: pointer;
-  font-family:monospace;
-  margin: 10px;
-  border-radius: 30%;
-  border: 5px solid black;
-  background-color: rgb(212, 212, 212);
-  padding: 15px;
+    font-size: 40px;
+    cursor: pointer;
+    font-family:monospace;
+    margin: 10px;
+    border-radius: 30%;
+    border: 5px solid black;
+    background-color: #A52019;
+    padding: 15px;
 }
 
 #maxNum-options button:nth-child(1):hover,
 #maxNum-options button:nth-child(2):hover,
 #maxNum-options button:nth-child(3):hover {
-  background-color: rgb(153, 153, 153);
+    background-color: #ff0d00;
 }
 
 #select{
