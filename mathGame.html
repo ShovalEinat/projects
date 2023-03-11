@@ -10,8 +10,12 @@
 </head>
 <body>  
     
+  <video id="video" autoplay muted controlsList="nodownload">
+    <source src="neverGonna.mp4" type="video/mp4">
+    Your browser does not support HTML video.
+  </video>
+
 <div id="mathGame">
-    
   <h1 title="If you click me 5 times you will receive a gift" id="title">Math Game</h1>
   <div id="start-btn">
     <br>
@@ -33,7 +37,7 @@
     <button id="checkAnswer" onclick="checkAnswer()">Check Answer (Enter)</button>
     <p id="result"></p>
     <p id="timer"></p>
-    <p id="score"></p>
+    <p onclick="playVideo()" id="score"></p>
     <button id="reStart" onclick="reStart()">Restart (R)</button>
     <button id="back" onclick="back()">Back to main menu (B)</button>
   </div>
