@@ -128,7 +128,18 @@ let rickRolledCount = 0;
 document.getElementById("title").addEventListener("click", function() {
   rickRolledCount++;
   if (rickRolledCount === 5) {
-    window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+    var neverGonna = new Audio("neverGonna.mp4");
+    neverGonna.play();
+    let video = document.getElementById("video");
+    video.style.display = "block";
+    video.requestFullscreen();
     rickRolledCount = 0;
+
+    setTimeout(function() {
+      alert("Get rickrolled!");
+      video.style.display = "none";
+      neverGonna.pause();
+    }, 6000);
+    
   }
 });
