@@ -1,195 +1,145 @@
-document.addEventListener('contextmenu', event => event.preventDefault());
-randomNumber.style.visibility="hidden";
-reSet.style.visibility="hidden";
-topSecret.style.visibility="hidden";
-endGame.style.visibility="hidden";
-endGame2.style.visibility="hidden";
-endGame3.style.visibility="hidden";
-endGame4.style.visibility="hidden";
-enterPassword.style.visibility="hidden";
-typePassword.style.visibility="hidden";
-passwordCheck.style.visibility="hidden";
-clue.style.visibility="hidden";
+var num1, num2, operator, answer, maxNum, timeLeft, timer, score, numQuestions, numCorrect;
 
-var password1 = "NICE";
-var password2 = "nice";
+function generateQuestion() {
+  num1 = Math.floor(Math.random() * maxNum) + 1;
+  num2 = Math.floor(Math.random() * maxNum) + 1;
+  operator = 3;
+  document.getElementById("question").innerHTML = num1 + " * " + num2;
+  answer = num1 * num2;
+  numQuestions++;
+}
 
-document.getElementById('passwordCheck').addEventListener('mousedown', passwordTest);
-
-function passwordTest() {   
-  
-    if(document.getElementById("typePassword").value != password1 &&
-    document.getElementById("typePassword").value != password2) {
-        endGame4.style.visibility="visible";
-        endGame.style.visibility="hidden";
-        endGame2.style.visibility="hidden";
-        endGame3.style.visibility="hidden";
-        setTimeout(() => {
-            const endGame4 = document.getElementById('endGame4');
-    
-            endGame4.style.visibility = 'hidden';
-            
-          }, 4000);
-      document.getElementById('typePassword').value = "";
-      return false;
+function startGame() {
+  timeLeft = 60;
+  score = 0;
+  numQuestions = 0;
+  numCorrect = 0;
+  generateQuestion();
+  document.getElementById("answer").value = "";
+  document.getElementById("answer").focus();
+  document.getElementById("start-btn").style.display = "none";
+  document.getElementById("game-container").style.display = "block";
+  document.getElementById("score").innerHTML = "Score: " + score;
+  document.getElementById("timer").innerHTML = "Time Left: " + timeLeft + "s";
+  startTimer();
+  document.addEventListener("keydown", function(event) {
+    if (event.code === "Enter") {
+      checkAnswer();
     }
-  
-    if(document.getElementById("typePassword").value == password1 ||
-    document.getElementById("typePassword").value == password2) {
-    var audio = new Audio('congratulations.mp3');
-    audio.play();
-    enterPassword.style.visibility="hidden";
-    typePassword.style.visibility="hidden";
-    passwordCheck.style.visibility="hidden";
-    clue.style.visibility="hidden";
-    endGame.style.visibility="visible";
-    endGame2.style.visibility="hidden";
-    endGame3.style.visibility="hidden";
-    endGame4.style.visibility="hidden";
-    stopTimer()
+  });
+}
 
-    setTimeout(() => {
-        const endGame = document.getElementById('endGame');
-
-        endGame.style.visibility = 'hidden';
-        
-      }, 5000);
+function checkAnswer() {
+  var userAnswer = parseFloat(document.getElementById("answer").value);
+  if (userAnswer === answer) {
+    score++;
+    numCorrect++;
+    document.getElementById("result").innerHTML = "Correct!";
+  } else {
+    document.getElementById("result").innerHTML = "Incorrect. The answer was " + answer + ".";
+    score = score -1;
   }
+  document.getElementById("answer").value = "";
+  generateQuestion();
+  document.getElementById("score").innerHTML = "Score: " + score;
 }
-
-document.getElementById("randomNumber").innerHTML =
-Math.floor(Math.random() * 100) + 1;
-
-function getRndInteger(min, max) {
-  return Math.floor(Math.random() * (max - min)) + min;
-}
-
-document.getElementById('Start').addEventListener('mousedown', setTheText);
-
-function setTheText() {
-    document.getElementById('randomNumber').style.visibility = "visible";
-    document.getElementById('topSecret').style.visibility = "visible";
-    document.getElementById('Press').style.visibility = "hidden";
-    document.getElementById('reSet').style.visibility = "visible";
-    startTimer()
-}
-
-document.getElementById("reSet").addEventListener("mouseover", hoverIsON);
-document.getElementById("Start").addEventListener("mouseover", hoverIsON1);
-document.getElementById("topSecret").addEventListener("mouseover", hoverIsON2);
-
-function hoverIsON(pEvent) {
-    if (pEvent.target.id == "reSet"){
-        pEvent.target.style.cursor = "pointer";
-    }
-    
-}
-
-function hoverIsON1(pEvent) {
-    if (pEvent.target.id == "Start"){
-        pEvent.target.style.cursor = "pointer";
-    }
-    
-}
-
-function hoverIsON2(pEvent) {
-    if (pEvent.target.id == "topSecret"){
-        pEvent.target.style.cursor = "pointer";
-    }
-    
-}
-
-topSecret.addEventListener('click', addSecretText);
-
-function addSecretText() {
-    endGame2.style.visibility="visible";
-    endGame3.style.visibility="hidden";
-    endGame.style.visibility="hidden";
-    endGame4.style.visibility="hidden";
-
-    setTimeout(() => {
-        const endGame2 = document.getElementById('endGame2');
-
-        endGame2.style.visibility = 'hidden';
-        
-      }, 8000);
-}
-
-document.getElementById("topSecret").addEventListener("contextmenu", Story1);
-
-function Story1() {
-    endGame.style.visibility="hidden";
-    endGame2.style.visibility="hidden";
-    endGame3.style.visibility="visible";
-    endGame4.style.visibility="hidden";
-
-    setTimeout(() => {
-        const endGame3 = document.getElementById('endGame3');
-
-        endGame3.style.visibility = 'hidden';
-        
-      }, 8000);
-}
-
-document.getElementById("randomNumber").addEventListener("contextmenu", passwordStart);
-
-function passwordStart() {
-enterPassword.style.visibility="visible";
-typePassword.style.visibility="visible";
-passwordCheck.style.visibility="visible";
-clue.style.visibility="visible";
-endGame.style.visibility="hidden";
-endGame2.style.visibility="hidden";
-endGame3.style.visibility="hidden";
-endGame4.style.visibility="hidden";
-}
-
-var gameTitle = document.getElementById("gameTitle");
-var timeout;
-
-gameTitle.addEventListener("mouseover", function() {
-  timeout = setTimeout(overFor5s, 5000);
-});
-
-gameTitle.addEventListener("mouseout", function() {
-  clearTimeout(timeout);
-});
-
-function overFor5s() {
-  alert("Try right cliking 5 times on the 'Random Number'");
-}
-
-
-let startTime;
-let timerInterval;
 
 function startTimer() {
-	startTime = Date.now();
-	timerInterval = setInterval(updateTimer, 1000);
+  timeLeft--;
+  document.getElementById("timer").innerHTML = "Time Left: " + timeLeft + "s";
+  if (timeLeft === 0) {
+    endGame();
+  } else {
+    timer = setTimeout(startTimer, 1000);
+  }
 }
 
-function updateTimer() {
-	const elapsedTime = Math.floor((Date.now() - startTime) / 1000);
-	document.getElementById("timer").textContent = elapsedTime;
+function reStart() {
+  timeLeft = 60;
+  score = 0;
+  numQuestions = 0;
+  numCorrect = 0;
+  document.getElementById("score").innerHTML = "Score: " + score;
+  document.getElementById("timer").innerHTML = "Time Left: " + timeLeft + "s";
+  document.getElementById("result").innerHTML = "";
+  clearTimeout(timer);
+  generateQuestion();
+  timer = setTimeout(startTimer, 1000);
 }
 
-function stopTimer() {
-	clearInterval(timerInterval);
-}
-
-function playVideo() {
-  window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
-}
-
-let count = 0;
-document.getElementById("randomNumber").addEventListener("click", function() {
-  count++;
-  if (count === 5) {
-    appendFunction();
-    count = 0;
+document.addEventListener("keydown", function(event) {
+  if (event.code === "KeyR") {
+    reStart();
   }
 });
 
-function appendFunction() {
-  playVideo();
+function back() {
+  location.reload();
 }
+
+document.addEventListener("keydown", function(event) {
+  if (event.code === "KeyB") {
+    back();
+  }
+});
+
+function endGame() {
+  clearInterval(timer);
+  document.getElementById("game-container").style.display = "none";
+  document.getElementById("timer").style.display = "none";
+  document.getElementById("score").style.display = "none";
+  document.getElementById("select").style.display = "none";
+  numQuestions = numQuestions -1;
+  var percentage = numCorrect / numQuestions * 100;
+  var resultText = document.createElement("p");
+  resultText.innerHTML = "Game Over! Your final score is " + score + " out of " + numQuestions + " (" + percentage.toFixed(2) + "%).";
+  document.getElementById("result-container").appendChild(resultText);
+  document.getElementById("start-btn").style.display = "block";
+
+  if (score > 25) {
+    var sheesh = new Audio("sheesh.mp3");
+    sheesh.play();
+  } else if (score > 10) {
+    var ohMyGod = new Audio("ohMyGod.mp3");
+    ohMyGod.play();
+  } else if (score > 0) {
+    var wow = new Audio("wowww.mp3");
+    wow.play();
+  } else if (score > -10) {
+    var windowsError = new Audio("windowsError.mp3");
+    windowsError.play();
+  } else {
+    var bruh = new Audio("bruh.mp3");
+    bruh.play();
+  }
+}
+
+function setMaxNum(num) {
+  maxNum = num;
+  document.getElementById("maxNum-options").style.display = "none";
+  startGame();
+}
+
+function showOptions() {
+  document.getElementById("maxNum-options").style.display = "block";
+}
+
+let rickRolledCount = 0;
+document.getElementById("title").addEventListener("click", function() {
+  rickRolledCount++;
+  if (rickRolledCount === 5) {
+    var neverGonna = new Audio("neverGonna.mp4");
+    neverGonna.play();
+    let video = document.getElementById("video");
+    video.style.display = "block";
+    video.requestFullscreen();
+    rickRolledCount = 0;
+
+    setTimeout(function() {
+      alert("Get rickrolled!");
+      video.style.display = "none";
+      neverGonna.pause();
+    }, 6000);
+    
+  }
+});
