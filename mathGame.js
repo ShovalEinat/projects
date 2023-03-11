@@ -62,6 +62,7 @@ function reStart() {
   document.getElementById("score").innerHTML = "Score: " + score;
   document.getElementById("timer").innerHTML = "Time Left: " + timeLeft + "s";
   document.getElementById("result").innerHTML = "";
+  document.getElementById("answer").value = "";
   clearTimeout(timer);
   generateQuestion();
   timer = setTimeout(startTimer, 1000);
